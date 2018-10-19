@@ -21,7 +21,7 @@
 using namespace std;
 
 const int TABLE_SIZE = 1009;
-const int MAX_RAND = 1000000;
+const int MAX_RAND = INT_MAX - 50;
 
 class HashTable {
     private:
@@ -274,7 +274,7 @@ int main(int argc, char** argv) {
 
     // Adding 900 random integers 50 - MAX_RAND
     for (int i = 0; i < 900; i++) {
-        int random = rand() % MAX_RAND;
+        int random = rand() % MAX_RAND + 50;
         tableLP.insert(random);
     }
 
@@ -306,7 +306,7 @@ int main(int argc, char** argv) {
 
     // Adding 900 random integers 50 - MAX_RAND
     for (int i = 0; i < 900; i++) {
-        int random = rand() % MAX_RAND;
+        int random = rand() % MAX_RAND + 50;
         tableDH.insert(random);
     }
 
