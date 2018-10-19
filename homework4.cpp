@@ -14,7 +14,7 @@
  * c_2 = 3
 */
 #include <iostream>
-#include <exception>
+#include <stdexcept>
 #include <stdlib.h>
 #include <time.h>
 
@@ -265,6 +265,7 @@ int main(int argc, char** argv) {
 
     cout << "\t" << tableQP.getUsedSlots() << endl;
     cout << "\tProbe Count for last 50: " << probeCount << endl;
+    cout << "\tAverage probes for last 50: " << (float)probeCount/50 << endl;
 
     // --------------------- LINEAR PROBING -----------------------
 
@@ -296,6 +297,7 @@ int main(int argc, char** argv) {
 
     cout << "\t" << tableLP.getUsedSlots() << endl;
     cout << "\tProbe Count for last 50: " << probeCount << endl;
+    cout << "\tAverage probes for last 50: " << (float)probeCount/50 << endl;
 
     // --------------------- DOUBLE HASHING -----------------------
 
@@ -327,5 +329,6 @@ int main(int argc, char** argv) {
 
     cout << "\t" << tableDH.getUsedSlots() << endl;
     cout << "\tProbe Count for last 50: " << probeCount << endl;
+    cout << "\tAverage probes for last 50: " << (float)probeCount/50 << endl;
     return 0;
 }
