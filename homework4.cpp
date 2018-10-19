@@ -21,7 +21,7 @@
 using namespace std;
 
 const int TABLE_SIZE = 1009;
-const int MAX_RAND = INT_MAX - 50;
+const int MAX_RAND = RAND_MAX - 50;
 
 class HashTable {
     private:
