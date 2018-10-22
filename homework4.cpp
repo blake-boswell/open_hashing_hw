@@ -231,39 +231,39 @@ int main(int argc, char** argv) {
     srand(time(NULL));
     int probeCount;
 
+    // ------------------- Generate Random Array ---------------------
+    int firstRandomKeys[900];
+    // Generate 900 random ints
+    for (int i = 0; i < 900; i++) {
+        int random = rand() % RAND_MAX;
+        firstRandomKeys[i] = random;
+    }
+
+    int secondRandomKeys[50];
+    // Generate 50 random ints
+    for (int i = 0; i < 50; i++) {
+        int random = rand() % RAND_MAX;
+        secondRandomKeys[i] = random;
+    }
+
     // --------------------- QUADRATIC PROBING -----------------------
 
     cout << "Quadratic Probing\n\n";
     HashTable tableQP (TABLE_SIZE, HashTable::QUADRATIC_PROBE);
     
-    // Adding 900 random integers 50 - MAX_RAND
+    // Adding 900 random integers
     for (int i = 0; i < 900; i++) {
-        int random = rand() % MAX_RAND + 50;
-        tableQP.insert(random);
+        tableQP.insert(firstRandomKeys[i]);
     }
 
     // Adding 50 new integers to count probes
     probeCount = 0;
 
-    int randomKeys[50];
     for (int i = 0; i < 50; i++) {
-        randomKeys[i] = i;
-    }
-    // Shuffle
-    for (int i = 0; i < 50; i++) {
-        int random = rand() % 50;
-        int temp = randomKeys[i];
-        randomKeys[i] = randomKeys[random];
-        randomKeys[random] = temp;
-    }
-
-    for (int i = 0; i < 50; i++) {
-        // int random = rand() % 50;
-        int numProbes = tableQP.insert(randomKeys[i]);
+        int numProbes = tableQP.insert(secondRandomKeys[i]);
         probeCount += numProbes;
     }
 
-    cout << "\t" << tableQP.getUsedSlots() << endl;
     cout << "\tProbe Count for last 50: " << probeCount << endl;
     cout << "\tAverage probes for last 50: " << (float)probeCount/50 << endl;
 
@@ -274,28 +274,17 @@ int main(int argc, char** argv) {
 
     // Adding 900 random integers 50 - MAX_RAND
     for (int i = 0; i < 900; i++) {
-        int random = rand() % MAX_RAND + 50;
-        tableLP.insert(random);
+        tableLP.insert(firstRandomKeys[i]);
     }
 
     // Adding 50 new integers to count probes
     probeCount = 0;
 
-    // Shuffle
     for (int i = 0; i < 50; i++) {
-        int random = rand() % 50;
-        int temp = randomKeys[i];
-        randomKeys[i] = randomKeys[random];
-        randomKeys[random] = temp;
-    }
-
-    for (int i = 0; i < 50; i++) {
-        // int random = rand() % 50;
-        int numProbes = tableLP.insert(randomKeys[i]);
+        int numProbes = tableLP.insert(secondRandomKeys[i]);
         probeCount += numProbes;
     }
 
-    cout << "\t" << tableLP.getUsedSlots() << endl;
     cout << "\tProbe Count for last 50: " << probeCount << endl;
     cout << "\tAverage probes for last 50: " << (float)probeCount/50 << endl;
 
@@ -306,28 +295,17 @@ int main(int argc, char** argv) {
 
     // Adding 900 random integers 50 - MAX_RAND
     for (int i = 0; i < 900; i++) {
-        int random = rand() % MAX_RAND + 50;
-        tableDH.insert(random);
+        tableDH.insert(firstRandomKeys[i]);
     }
 
     // Adding 50 new integers to count probes
     probeCount = 0;
 
-    // Shuffle
     for (int i = 0; i < 50; i++) {
-        int random = rand() % 50;
-        int temp = randomKeys[i];
-        randomKeys[i] = randomKeys[random];
-        randomKeys[random] = temp;
-    }
-
-    for (int i = 0; i < 50; i++) {
-        // int random = rand() % 50;
-        int numProbes = tableDH.insert(randomKeys[i]);
+        int numProbes = tableDH.insert(secondRandomKeys[i]);
         probeCount += numProbes;
     }
 
-    cout << "\t" << tableDH.getUsedSlots() << endl;
     cout << "\tProbe Count for last 50: " << probeCount << endl;
     cout << "\tAverage probes for last 50: " << (float)probeCount/50 << endl;
     return 0;
